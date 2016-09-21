@@ -1,0 +1,23 @@
+parameters:
+    sheet_type.class: TestBundle\Form\Type\SheetType
+    sheet_handler.class: TestBundle\Form\Handler\SheetHandler
+    symfony.form.class: Symfony\Component\Form\Form
+
+services:
+    sheet_form:
+        factory_service: form.factory
+        factory_method: createNamed
+        class: %symfony.form.class%
+        arguments:
+            - sheet
+            - sheet_form
+
+    sheet_type:
+        class: %sheet_type.class%
+        tags:
+            - { name: form.type, alias: sheet_form }
+
+    sheet_handler:
+        class: %sheet_handler.class%
+        arguments: [@sheet_form, @request, @doctrine.orm.entity_manager]
+        scope: request

@@ -1,0 +1,7 @@
+user_homepage:
+    path:     /
+    defaults: { _controller: TestBundle:Default:index }
+
+user_inscription:
+    path:     /inscription
+    defaults: { _controller: UserBundle:User:login }

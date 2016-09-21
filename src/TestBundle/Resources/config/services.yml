@@ -1,0 +1,46 @@
+parameters:
+    sheet_type.class: TestBundle\Form\Type\SheetType
+    sheet_handler.class: TestBundle\Form\Handler\SheetHandler
+    symfony.form.class: Symfony\Component\Form\Form
+    tournois_type.class: TestBundle\Form\Type\TournoisType
+    tournois_handler.class: TestBundle\Form\Handler\TournoisHandler
+    symfony.form.class: Symfony\Component\Form\Form
+
+
+services:
+    sheet_form:
+        factory_service: form.factory
+        factory_method: createNamed
+        class: %symfony.form.class%
+        arguments:
+            - sheet
+            - sheet_form
+
+    sheet_type:
+        class: %sheet_type.class%
+        tags:
+            - { name: form.type, alias: sheet_form }
+
+    sheet_handler:
+        class: %sheet_handler.class%
+        arguments: [@sheet_form, @request, @doctrine.orm.entity_manager]
+        scope: request
+
+
+    tournois_form:
+        factory_service: form.factory
+        factory_method: createNamed
+        class: %symfony.form.class%
+        arguments:
+            - tournois
+            - tournois_form
+
+    tournois_type:
+        class: %tournois_type.class%
+        tags:
+            - { name: form.type, alias: tournois_form }
+
+    tournois_handler:
+        class: %tournois_handler.class%
+        arguments: [@tournois_form, @request, @doctrine.orm.entity_manager]
+        scope: request
