@@ -1,0 +1,11 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+
+{{ form_start(form)}}
+{{ form_label(form.Name) }} {{ form_widget(form.Name) }}
+{{ form_rest(form)}}
+ 
+
+ {% endblock %}
