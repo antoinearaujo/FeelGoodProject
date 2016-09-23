@@ -21,6 +21,14 @@ class Sheet
      */
     protected $id;
 
+     /**
+     * @var string
+     *
+     * @ORM\OneToOne(targetEntity="TestBundle\Entity\Comment", cascade={"persist", "remove"})
+     */
+    protected $comment;
+
+
     /**
      * @var string
      *
@@ -28,27 +36,18 @@ class Sheet
      */
     protected $name;
 
+    
     /**
      * @var string
      *
-     * @ORM\Column(name="console", type="string", length=255)
-     */
-    protected $console;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="etat", type="string", length=255)
-     */
-    protected $etat;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="prix", type="string", length=255)
+     * @ORM\Column(name="message", type="string", length=255)
      */
 
-    protected $prix;
+    protected $message;
+
+
+
+
 
 
     /**
@@ -59,6 +58,29 @@ class Sheet
     public function getId()
     {
         return $this->id;
+    }
+
+     /**
+     * Set comment
+     *
+     * @param string $comment
+     * @return Sheet
+     */
+    public function setComment()
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string 
+     */
+    public function getComment()
+    {
+        return $this->comment;
     }
 
     /**
@@ -84,71 +106,28 @@ class Sheet
         return $this->name;
     }
 
+    
+
     /**
-     * Set console
+     * Set message
      *
-     * @param string $console
+     * @param string $message
      * @return Sheet
      */
-    public function setConsole($console)
+    public function setMessage($message)
     {
-        $this->console = $console;
+        $this->message = $message;
 
         return $this;
     }
 
     /**
-     * Get console
+     * Get message
      *
      * @return string 
      */
-    public function getConsole()
+    public function getMessage()
     {
-        return $this->console;
+        return $this->message;
     }
-    /**
-     * Set etat
-     *
-     * @param string $etat
-     * @return Sheet
-     */
-    public function setEtat($etat)
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
-    /**
-     * Get etat
-     *
-     * @return string 
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-
-    /**
-     * Set prix
-     *
-     * @param string $prix
-     * @return Sheet
-     */
-    public function setPrix($prix)
-    {
-        $this->prix = $prix;
-
-        return $this;
-    }
-
-    /**
-     * Get prix
-     *
-     * @return string 
-     */
-    public function getPrix()
-    {
-        return $this->prix;
-    }
-}
+  }

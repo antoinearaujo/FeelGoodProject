@@ -1,0 +1,10 @@
+user_homepage:
+    path:     /
+    defaults: { _controller: TestBundle:Default:index }
+
+user_post:
+    path:     /post
+    defaults: { _controller: TestBundle:Default:post }
+
+
+
