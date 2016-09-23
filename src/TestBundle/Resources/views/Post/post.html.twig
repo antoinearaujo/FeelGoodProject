@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="{{ path('user_homepage') }}">Public</a></li>
-        <li><a href="#">Privé</a></li>
+        <li><a href="user_homepage">Privé</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -94,7 +94,7 @@
           <div class="well">
 
           {{ form_start(form)}}
-          {{ form_label(form.Name) }} {{ form_widget(form.Name) }}
+          {{ form_label(form.pseudo) }} {{ form_widget(form.pseudo) }}
           {{ form_rest(form)}}
 
           </br>

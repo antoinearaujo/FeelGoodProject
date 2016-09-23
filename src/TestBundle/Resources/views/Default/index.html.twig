@@ -26,7 +26,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
       {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-user"></span> Se Déconnecter'</a></li>
+        <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-user"></span> Se Déconnecter</a></li>
         {% else %}
            <li><a href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-user"></span> Se Connecter</a></li>
       {% endif %}  
@@ -77,23 +77,23 @@
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
             <div class="panel-body">
-              <h2 style="font-family: Andale Mono, monospace;">Conversations:</h2>
+              <h2 style="font-family: Andale Mono, monospace;">Conversations:</h2><a href="{{ path('user_post') }}" class="btn btn-success"><h5>Je veux publier !</h5></a>
             </div>
           </div>
         </div>
       </div>
 
-      {% for tournois in tournoiss %}
+      {% for post in posts %}
       <div class="row">
         <div class="col-sm-3">
           <div class="well">
-           <p>{{ tournois.name }}</p>
+           <p>{{ post.pseudo }}</p>
            <img src="{{asset('bundles/framework/images/avatar.png')}}" class="img-circle" height="55" width="55" alt="Avatar" />
           </div>
         </div>
         <div class="col-sm-9">
           <div class="well">
-          {{ tournois.jeux }}
+          <p>{{ post.message }}</p>
           </br>
           <div class="panel-body">
           <button type="button" class="btn btn-default btn-sm">
